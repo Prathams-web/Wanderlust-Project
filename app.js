@@ -24,6 +24,11 @@ const userRouter = require("./routes/user.js");
 var cors = require('cors');
 app.use(cors());
 
+var corsOptions = {
+  origin: 'wanderlust-project.vercel.app',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
 const dbUrl = process.env.ATLASDB_URL;
 // const dbUrl = 'mongodb://127.0.0.1:27017/wanderlust';
 
@@ -92,7 +97,7 @@ app.use((req, res, next) => {
 });
 
 
-app.use("/listings", listingRouter);
+app.use("/listings", cors(corsOptions), listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 

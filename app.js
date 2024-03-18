@@ -20,6 +20,10 @@ const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
+// cors code
+var cors = require('cors');
+app.use(cors());
+
 const dbUrl = process.env.ATLASDB_URL;
 // const dbUrl = 'mongodb://127.0.0.1:27017/wanderlust';
 
